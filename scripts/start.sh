@@ -10,10 +10,10 @@ DATADIR="/var/www"
 chown -R www-data $DATADIR
 
 # Echo in environment variables to the PHP-FPM config file
- sed -i "s/DBADDR/$DB_PORT_3306_TCP_PORT/g" /etc/php5/fpm/pool.d/www.conf
- sed -i "s/DBPORT/$DB_PORT_3306_TCP_ADDR/g" /etc/php5/fpm/pool.d/www.conf
- sed -i "s/DBUSER/$DB_ENV_USER/g" /etc/php5/fpm/pool.d/www.conf
- sed -i "s/DBPASS/$DB_ENV_PASS/g" /etc/php5/fpm/pool.d/www.conf
+ sed -i "s/DBADDR/$DB_PORT_3306_TCP_ADDR/g" /etc/php5/fpm/pool.d/www.conf
+ sed -i "s/DBPORT/$DB_PORT_3306_TCP_PORT/g" /etc/php5/fpm/pool.d/www.conf
+ sed -i "s/DBUSER/$DB_USER/g" /etc/php5/fpm/pool.d/www.conf
+ sed -i "s/DBPASS/$DB_PASS/g" /etc/php5/fpm/pool.d/www.conf
 
 # Echo in environment variables to the postfix config file
 sed -i "s/SMTPHOST/$SMTP_HOST/g" /etc/postfix/main.cf
