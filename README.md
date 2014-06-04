@@ -26,6 +26,17 @@ docker run -d --link mariadb:db -v /home/deploy/www/rechargify-prod:/var/www -e 
 ```
 
 ## Database
+This container is meant to be ran in tandem with a database container, make sure you link this container to that one using the alias ```db```. This is how you echo the connection details in your PHP App:
+```
+// Echoes the database hostname
+echo $_SERVER["DB_PORT_3306_TCP_PORT"];
+// Echoes the username
+echo $_SERVER["DB_ENV_USER"];
+// Echoes the password
+$_SERVER["DB_ENV_PASS"];
+```
+If you're looking for a MariaDB container to use, this one works well: https://github.com/heyimwill/docker-mariadb. It's based on Painted-Fox's excellent work.
+
 
 ## Roadmap
 
