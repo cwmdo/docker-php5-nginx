@@ -6,8 +6,24 @@ This is a tuned PHP stack compatible with the Twelve-Factor methodology includin
 You can read more about the Twelve-Factor methodology here: http://12factor.net
 
 ## Setup
+Grab the latest version of this image from the Docker index:
+```
+docker pull heyimwill/docker-php5-nginx
+```
+You can also build the image yourself right from this repo:
+```
+docker build -t php-stack github.com/heyimwill/docker-php5-nginx
+```
 
 ## Running
+In order for this image to run at all, these environment variables need a defined value: SMTP_HOST, SMTP_USER, SMTP_PASS, DB_USER and DB_PASS. It also needs to be linked to a database container with an alias defined as ```db```.
+
+It expects you to mount your web root to ```/var/www```.
+
+Here's how an example of how it can be ran:
+```
+docker run -d --link mariadb:db -v /home/deploy/www/rechargify-prod:/var/www -e "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=username" -e "DB_PASS=pass" php-stack
+```
 
 ## Database
 
