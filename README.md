@@ -38,7 +38,7 @@ echo $_SERVER["DB_PORT"];
 echo $_SERVER["DB_USER"];
 
 # Echoes the password
-$_SERVER["DB_ENV_PASS"];
+echo $_SERVER["DB_ENV_PASS"];
 ```
 If you're looking for a MariaDB container to use, this one works well: https://github.com/heyimwill/docker-mariadb. It's based on Painted-Fox's excellent work.
 
