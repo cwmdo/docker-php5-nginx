@@ -38,8 +38,10 @@ echo $_SERVER["DB_PORT"];
 echo $_SERVER["DB_USER"];
 
 # Echoes the password
-echo $_SERVER["DB_ENV_PASS"];
+echo $_SERVER["DB_PASS"];
 ```
+When using these in a config file you don't need the echo part.
+
 If you're looking for a MariaDB container to use, this one works well: https://github.com/heyimwill/docker-mariadb. It's based on Painted-Fox's excellent work.
 
 
