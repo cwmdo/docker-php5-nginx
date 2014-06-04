@@ -29,7 +29,7 @@ ADD conf/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 ADD conf/www.conf /etc/php5/fpm/pool.d/www.conf
 ADD conf/main.cf /etc/postfix/main.cf
 ADD conf/sasl_passwd /etc/postfix/sasl/sasl_passwd
-ADD https://raw.githubusercontent.com/heyimwill/docker-baseimage/master/conf/sysctl.conf /etc/sysctl.conf
+ADD conf/sysctl.conf /etc/sysctl.conf
 
 # Decouple our data from our container.
 VOLUME ["/var/www"]
