@@ -31,4 +31,4 @@ echo "Starting PHP5..."
 service php5-fpm start
 service php5-fpm status
 echo "Starting Postfix..."
-service postfix start ; read -p "Hit enter to kill"
+service postfix start ; tail -f /var/log/bootstrap.log
