@@ -2,6 +2,9 @@ FROM ubuntu:14.04
 
 MAINTAINER William Dahlstrom "w.dahlstrom@me.com"
 
+# Ensure UTF-8
+RUN locale-gen en_US.UTF-8
+
 # Adding up to date repositories
 RUN apt-get -qq update
 RUN apt-get -qqy install --no-install-recommends software-properties-common python-software-properties
@@ -13,6 +16,10 @@ RUN echo deb http://dl.hhvm.com/ubuntu precise main | tee /etc/apt/sources.list.
 # Install nginx, postfix, php5 and dependencies
 RUN apt-get -qq update
 RUN apt-get -qqy install --force-yes nginx postfix php5-fpm php5-mysql php5-mcrypt php5-curl php5-cli php5-memcache php5-memcached php5-intl curl hhvm-fastcgi
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # Create www directorys
 RUN mkdir -p /var/www
