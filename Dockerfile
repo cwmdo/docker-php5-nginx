@@ -10,12 +10,10 @@ RUN apt-get -qq update
 RUN apt-get -qqy install --no-install-recommends software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:ondrej/nginx
 RUN add-apt-repository -y ppa:ondrej/php5
-RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 5A16E7281BE7A449
-RUN echo deb http://dl.hhvm.com/ubuntu precise main | tee /etc/apt/sources.list.d/hhvm.list
 
 # Install nginx, postfix, php5 and dependencies
 RUN apt-get -qq update
-RUN apt-get -qqy install --force-yes nginx postfix php5-fpm php5-mysql php5-mcrypt php5-curl php5-cli php5-memcache php5-memcached php5-intl curl hhvm-fastcgi
+RUN apt-get -qqy install --force-yes nginx postfix php5-fpm php5-mysql php5-mcrypt php5-curl php5-cli php5-memcache php5-memcached php5-intl curl
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
