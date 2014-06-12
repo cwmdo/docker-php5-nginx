@@ -20,13 +20,13 @@ In order for this image to run at all, these environment variables need a define
 
 It expects you to mount your web root to ```/var/www```.
 
-Here's an example of how it can be ran:
+Here's an example of how it can be run:
 ```
 docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=username" -e "DB_PASS=pass" php-stack
 ```
 
 ## Database
-This container is meant to be ran in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. This is how you echo the connection details in your PHP App:
+This container is meant to be run in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. This is how you echo the connection details in your PHP App:
 ```
 # Echoes the database hostname
 echo $_SERVER["DB_ADDR"];
