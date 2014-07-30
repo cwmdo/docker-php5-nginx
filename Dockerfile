@@ -40,7 +40,7 @@ ADD conf/sasl_passwd /etc/postfix/sasl/sasl_passwd
 ADD conf/sysctl.conf /etc/sysctl.conf
 
 # Decouple our data from our container.
-VOLUME ["/var/www"]
+VOLUME ["/var/www", "var/log"]
 
 EXPOSE 80
 ADD scripts /scripts
