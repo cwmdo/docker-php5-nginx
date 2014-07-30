@@ -26,7 +26,7 @@ docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e "SMTP_HOST=smtp.
 ```
 
 ## Database
-This container is meant to be run in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. This is how you echo the connection details in your PHP App:
+This container is meant to be run in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. Here's how it can be used to conigure your app to connect to your database:
 ```
 # Echoes the database hostname
 $db_host = $_SERVER["DB_ADDR"];
