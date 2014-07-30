@@ -1,7 +1,7 @@
 Just another docker PHP Stack
 =================
 
-This is a tuned PHP stack compatible with the Twelve-Factor methodology built on nginx, php-fpm and postfix. It's built with performance in mind and settings have been tweaked to suit production deployments. In accordance to the Twelve-Factor methodology it supports environment variables to connect a database (postgres, mariadb, etc) by simply linking this container to your databse container and using environment variables to define a username/password. It also uses postfix which can be configured to use an external SMTP service (mailgun, mandrill, etc) through environment variables.
+This is a tuned PHP stack compatible with the Twelve-Factor methodology built on nginx, php-fpm and postfix. It's built with performance in mind and settings have been tweaked to suit production deployments. In accordance to the Twelve-Factor methodology it supports environment variables to connect to a database (postgres, mariadb, etc) by simply linking this container to your database container and using environment variables to define a username/password. It also uses postfix which can be configured to use an external SMTP service (mailgun, mandrill, etc) through environment variables.
 
 You can read more about the Twelve-Factor methodology here: http://12factor.net
 
@@ -29,19 +29,19 @@ docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e "SMTP_HOST=smtp.
 This container is meant to be run in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. This is how you echo the connection details in your PHP App:
 ```
 # Echoes the database hostname
-echo $_SERVER["DB_ADDR"];
+$db_host = $_SERVER["DB_ADDR"];
 
 # Echoes the database port
-echo $_SERVER["DB_PORT"];
+$db_port = $_SERVER["DB_PORT"];
 
 # Echoes the username
-echo $_SERVER["DB_USER"];
+$db_user = $_SERVER["DB_USER"];
 
 # Echoes the password
-echo $_SERVER["DB_PASS"];
+$db_password = $_SERVER["DB_PASS"];
 ```
 
-This is a suitable MariaDB(MySQL) container: https://github.com/heyimwill/docker-mariadb
+If you don't want to roll your own database container, here's a prebuilt one that you can use: https://github.com/heyimwill/docker-mysql
 
 
 ## Roadmap
