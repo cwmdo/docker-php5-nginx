@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.10
 
 MAINTAINER William Dahlstrom "w.dahlstrom@me.com"
 
@@ -46,4 +46,4 @@ ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 
 # Use baseimage-docker's init system.
-CMD ["/scripts/start.sh"]
+CMD ["/sbin/my_init", "--", "/scripts/start.sh"]
