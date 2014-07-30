@@ -4,7 +4,7 @@
 DATADIR="/var/www"
 
 # Don't continue if we catch an error.
-# set -e
+set -e
 
 # Ensure www-data owns the DATADIR
 chown -R www-data $DATADIR
@@ -24,11 +24,4 @@ sed -i "s/SMTPPASS/$SMTP_PASS/g" /etc/postfix/sasl/sasl_passwd
 # Postmap the Postfix changes
 postmap /etc/postfix/sasl/sasl_passwd
 
-echo "Starting nginx..."
-service nginx start
-service nginx status
-echo "Starting PHP5..."
-service php5-fpm start
-service php5-fpm status
-echo "Starting Postfix..."
-service postfix start
+echo "Environment variables injected..."
