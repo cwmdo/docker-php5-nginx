@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.13
+FROM phusion/baseimage:0.9.12
 
 MAINTAINER William Dahlstrom "w.dahlstrom@me.com"
 
