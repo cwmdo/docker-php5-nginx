@@ -35,7 +35,6 @@ ADD conf/php.ini /etc/php5/fpm/php.ini
 ADD conf/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 ADD conf/www.conf /etc/php5/fpm/pool.d/www.conf
 ADD conf/main.cf /etc/postfix/main.cf
-ADD conf/rc.local /etc/rc.local
 ADD conf/sasl_passwd /etc/postfix/sasl/sasl_passwd
 ADD conf/sysctl.conf /etc/sysctl.conf
 
