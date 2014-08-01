@@ -1,32 +1,33 @@
-Just another docker PHP Stack
+Just another docker PHP (spaghetti) Stack
 =================
 
-This is a tuned PHP stack compatible with the Twelve-Factor methodology built on nginx, php-fpm and postfix. It's built with performance in mind and settings have been tweaked to suit production deployments. In accordance to the Twelve-Factor methodology it supports environment variables to connect to a database (postgres, mariadb, etc) by simply linking this container to your database container and using environment variables to define a username/password. It also uses postfix which can be configured to use an external SMTP service (mailgun, mandrill, etc) through environment variables.
+This is a tuned PHP stack compatible with the Twelve-Factor methodology built on nginx, php-fpm and postfix. It's configured with performance in mind and settings have been tweaked to suit production deployments. In accordance to the Twelve-Factor methodology it uses environment variables to connect to a database (postgres, mariadb, etc) by simply linking a database to this container and using environment variables to pass login information. It also uses postfix which can be configured to use an external SMTP service (mailgun, mandrill, etc) through environment variables.
 
 You can read more about the Twelve-Factor methodology here: http://12factor.net
 
-## Setup
-Grab the latest version of this image from the Docker index:
-```
-docker pull heyimwill/docker-php5-nginx
-```
-You can also build the image yourself right from this repo:
-```
-docker build -t php-stack github.com/heyimwill/docker-php5-nginx
-```
+You can grab the accompanying database container here: https://github.com/heyimwill/docker-mariadb
+
+## Features
+* Installs nginx, php-fpm and postfix
+* Tuned nginx & php configurations
+* h5bp security & speed enhancements (https://github.com/h5bp/server-configs-nginx)
+* Tuned sysctl.conf
+* Support for external SMTP service (e.g http://mandrillapp.com)
+* Easily access logs
+* Compatible with the Twelve Factor Methodology (http://12factor.net)
 
 ## Running
-In order for this image to run at all, these environment variables need a defined value: SMTP_HOST, SMTP_USER, SMTP_PASS, DB_USER and DB_PASS. It also needs to be linked with a database container with an alias defined as ```db```.
+In order for this container to run at all, these environment variables need to be defined: SMTP_HOST, SMTP_USER, SMTP_PASS, DB_USER and DB_PASS. It also needs to be linked to a database container with an alias defined as ```db```.
 
-It expects you to mount your web root to ```/var/www```.
+It expects you to mount your web root to ```/var/www```. If you want easy access to logs, you can mount ´´´/logs´´ as well.
 
-Here's an example of how it can be run:
+It all comes out to something like this:
 ```
-docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=username" -e "DB_PASS=pass" php-stack
+docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e -v /home/deploy/logs/php-stack:/logs "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=db username" -e "DB_PASS=db pass" php-stack
 ```
 
 ## Database
-This container is meant to be run in tandem with a database container, make sure you link this container with a database container assigned the alias ```db```. Here's how it can be used to conigure your app to connect to your database:
+This container is supposed to run side by side with a database container, so make sure you link this container with a database container assigned the alias ```db```. Here's how it can be used to conigure your app to connect to your database:
 ```
 # Echoes the database hostname
 $db_host = $_SERVER["DB_ADDR"];
@@ -41,7 +42,7 @@ $db_user = $_SERVER["DB_USER"];
 $db_password = $_SERVER["DB_PASS"];
 ```
 
-If you don't want to roll your own database container, here's a prebuilt one that you can use: https://github.com/heyimwill/docker-mysql
+If you don't want to roll your own database container, here's a prebuilt MariaDB (MySQL) container that works great with this one: https://github.com/heyimwill/docker-mariadb
 
 
 ## Roadmap
