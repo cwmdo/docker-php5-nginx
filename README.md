@@ -19,11 +19,11 @@ You can grab the accompanying database container here: https://github.com/heyimw
 ## Running
 In order for this container to run at all, these environment variables need to be defined: SMTP_HOST, SMTP_USER, SMTP_PASS, DB_USER and DB_PASS. It also needs to be linked to a database container with an alias defined as ```db```.
 
-It expects you to mount your web root to ```/var/www```. If you want easy access to logs, you can mount ´´´/logs´´ as well.
+It expects you to mount your web root to ```/var/www```. If you want easy access to logs, you can mount ```/logs``` as well.
 
 It all comes out to something like this:
 ```
-docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e -v /home/deploy/logs/php-stack:/logs "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=db username" -e "DB_PASS=db pass" php-stack
+docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e -v /home/deploy/logs/php-stack:/logs "SMTP_HOST=smtp.mandrillapp.com:587" -e "SMTP_USER=username" -e "SMTP_PASS=pass" -e "DB_USER=db username" -e "DB_PASS=db pass" heyimwill/docker-php5-nginx
 ```
 
 ## Database
