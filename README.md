@@ -29,16 +29,16 @@ docker run -d --link mariadb:db -v /home/deploy/www:/var/www -e -v /home/deploy/
 ## Database
 This container is supposed to run side by side with a database container, so make sure you link this container with a database container assigned the alias ```db```. Here's how it can be used to conigure your app to connect to your database:
 ```
-# Echoes the database hostname
+# Sets the database hostname
 $db_host = $_SERVER["DB_ADDR"];
 
-# Echoes the database port
+# Sets the database port
 $db_port = $_SERVER["DB_PORT"];
 
-# Echoes the username
+# Sets the username
 $db_user = $_SERVER["DB_USER"];
 
-# Echoes the password
+# Sets the password
 $db_password = $_SERVER["DB_PASS"];
 ```
 
