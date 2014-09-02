@@ -31,4 +31,5 @@ echo "Starting PHP5..."
 service php5-fpm start
 service php5-fpm status
 echo "Starting Postfix..."
+echo "Bootup fine."
 service postfix start ; tail -f /var/log/bootstrap.log
