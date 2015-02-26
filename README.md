@@ -44,6 +44,3 @@ $db_password = $_SERVER["DB_PASS"];
 
 If you don't want to roll your own database container, here's a prebuilt MariaDB (MySQL) container that works great with this one: https://github.com/heyimwill/docker-mariadb
 
-
-## Roadmap
-
